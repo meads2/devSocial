@@ -1,0 +1,80 @@
+// Navbar
+doctype html
+html(lang='en')
+  head
+    include head.pug
+  body.dashboard
+    header.navbar
+      .nav-wrapper
+        .logo
+          img(src="../img/logo.svg")
+        .search
+          input(type="text" placeholder="Search")
+          i.fa.fa-search
+        .toolbar
+          a.navatar GH
+          a.name Hello, 
+            span#user Grace
+    header.navbar-secondary
+      nav.links
+        a.link.active
+          i.fa.fa-newspaper-o
+          | Newsfeed 
+        a.link
+          i.fa.fa-users
+          | Groups
+        a.link
+          i.fa.fa-desktop
+          | Apps
+        a.link
+          i.fa.fa-gears
+          | Settings
+    // Dashboard Content
+    .lightbox
+      .lightbox-body
+        i.fa.fa-close
+        h1#lb-title Title
+        ul#details
+    section.dash-content
+      .row
+        .card#about
+          h2 About
+          a.card-link Learn More
+        .card#quotes
+          h2 Quotes
+          a.card-link Read Quotes
+        .card#debugging
+          h2 Debugging
+          a.card-link Read More
+      .row
+        .card.half#awards
+          h2 Awards & Recognition
+          a.card-link See Awards
+        .card.half#poll
+          .card-header
+            h2 Poll
+            p Was Grace Hopper a great software developer? Or the greatest software developer of all-time?
+          .polls
+            .poll-group
+              .poll
+                .bg
+                .complete.first
+                .percent#p1 33%
+              label Great Software Developer
+            .poll-group
+              .poll
+                .bg
+                .complete.second
+                .percent#p2 64%
+              label Greatst Software Developer
+          .polls-btn
+            a.poll-btn.one Great
+            a.poll-btn.two Greatest Of All Time
+          .info-message
+            h3 
+              i.fa.fa-check
+              | Thanks! Your vote was submitted.
+      footer.footer
+        p &copy; 2017 DevBook Inc. All Rights Reserved.
+          
+    include scripts.pug

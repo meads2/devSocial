@@ -1,0 +1,88 @@
+
+<!-- Navbar--><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Reset-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!-- Font Awesome-->
+    <script src="https://use.fontawesome.com/8ae9391f22.js"></script>
+    <!-- Animate CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <!-- Custom Styles-->
+    <link rel="stylesheet" href="../styles/main.css">
+  </head>
+  <body class="dashboard">
+    <header class="navbar">
+      <div class="nav-wrapper">
+        <div class="logo"><img src="../img/logo.svg"></div>
+        <div class="search">
+          <input type="text" placeholder="Search"><i class="fa fa-search"></i>
+        </div>
+        <div class="toolbar"><a class="navatar">GH</a><a class="name">Hello, <span id="user">Grace</span></a></div>
+      </div>
+    </header>
+    <header class="navbar-secondary">
+      <nav class="links"><a class="link active"><i class="fa fa-newspaper-o"></i>Newsfeed </a><a class="link"><i class="fa fa-users"></i>Groups</a><a class="link"><i class="fa fa-desktop"></i>Apps</a><a class="link"><i class="fa fa-gears"></i>Settings</a></nav>
+    </header>
+    <!-- Dashboard Content-->
+    <div class="lightbox">
+      <div class="lightbox-body"><i class="fa fa-close"></i>
+        <h1 id="lb-title">Title</h1>
+        <ul id="details"></ul>
+      </div>
+    </div>
+    <section class="dash-content">
+      <div class="row">
+        <div class="card" id="about">
+          <h2>About</h2><a class="card-link">Learn More</a>
+        </div>
+        <div class="card" id="quotes">
+          <h2>Quotes</h2><a class="card-link">Read Quotes</a>
+        </div>
+        <div class="card" id="debugging">
+          <h2>Debugging</h2><a class="card-link">Read More</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card half" id="awards">
+          <h2>Awards & Recognition</h2><a class="card-link">See Awards</a>
+        </div>
+        <div class="card half" id="poll">
+          <div class="card-header">
+            <h2>Poll</h2>
+            <p>Was Grace Hopper a great software developer? Or the greatest software developer of all-time?</p>
+          </div>
+          <div class="polls">
+            <div class="poll-group">
+              <div class="poll">
+                <div class="bg"></div>
+                <div class="complete first"></div>
+                <div class="percent" id="p1">33%</div>
+              </div>
+              <label>Great Software Developer</label>
+            </div>
+            <div class="poll-group">
+              <div class="poll">
+                <div class="bg"></div>
+                <div class="complete second"></div>
+                <div class="percent" id="p2">64%</div>
+              </div>
+              <label>Greatst Software Developer</label>
+            </div>
+          </div>
+          <div class="polls-btn"><a class="poll-btn one">Great</a><a class="poll-btn two">Greatest Of All Time</a></div>
+          <div class="info-message">
+            <h3> <i class="fa fa-check"></i>Thanks! Your vote was submitted.</h3>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>&copy; 2017 DevBook Inc. All Rights Reserved.</p>
+      </footer>
+    </section>
+    <!-- JQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <!-- Custom JS-->
+    <script src="../js/app.js"></script>
+  </body>
+</html>

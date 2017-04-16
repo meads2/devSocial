@@ -1,0 +1,142 @@
+@import "variables"
+
+// Layout
+.landing
+  overflow: hidden
+
+.wrapper
+  width: 100%
+  height: 100vh
+  background-image: url('../img/login-bg.png')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: left bottom
+  font-family: $f-family
+
+.content
+  width: 764px
+  margin: 0 auto
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+// Left Hero Content
+.left
+  display: flex
+  flex-direction: column
+  flex: 1
+
+.hero-title, .hero-sub
+  text-shadow: 0 1px 2px rgba(black, .66)
+
+.hero-title
+  font-size: 54px
+  color: #fff
+  font-weight: 300
+  letter-spacing: 1px
+  line-height: 54px
+  width: 320px
+
+.hero-sub
+  font-weight: 300
+  letter-spacing: .29px
+  line-height: 26px
+  width: 200px
+  color: #fff
+  margin-top: 16px
+
+.btn-group
+  display: flex
+  width: 300px
+  margin-top: 32px
+
+.btn-default
+  display: block
+  margin-right: 16px
+  background: $blue
+  &:hover
+    background: darken($blue, 10%)
+.btn
+  width: 140px
+  height: 40px
+  color: #fff
+  text-align: center
+  font-size: 14px
+  line-height: 40px
+  font-weight: 400
+  border-radius: 2px
+  &:hover
+    cursor: pointer
+.btn-outline
+  border: 1px solid #fff
+  &:hover
+    background: #fff
+    color: #333
+
+
+// Right Side Form Area
+.right
+  flex: 1
+  display: flex
+  align-items: center
+  justify-content: center
+
+.login-form
+  background: #fff
+  width: 276px
+  padding: 32px 24px
+  border-radius: 2px
+  box-shadow: 0 2px 4px rgba(black, .24), 0 2px 14px rgba(black,.24)
+
+.form-header h2
+  font-size: 22px
+  color: $text-prim
+  font-weight: 400
+  letter-spacing: .40px
+  text-align: center
+
+.form-header p
+  font-size: 12px
+  margin: 0 auto 16px auto
+  width: 160px
+  text-align: center
+  line-height: 15px
+  opacity: .3
+  color: $text-prim
+
+.input-grp
+  display: flex
+  flex-direction: column
+  color: $text-prim
+  margin-bottom: 16px
+  label
+    font-size: 14px
+    margin-bottom: 8px
+  input
+    border-radius: 2px
+    border: 1px solid #dfe1e4
+    width: 100%
+    height: 40px
+    padding: 0 0 0 16px
+    font-size: 12px
+    font-weight: 300
+    &:hover
+      border: 1px solid rgba(black, .2)
+    &:focus
+      outline: none
+      border: 1px solid rgba(68,154,255,.7)
+      box-shadow: 0 1px 4px rgba(68, 154, 255,.4)
+.login-form .btn-default
+  width: 100%
+
+.form-info
+  font-size: 10px
+  margin-top: 8px
+  color: #ABACB0
+  text-align: center
+  a
+    color: $blue
+    text-decoration: underline
+    &:hover
+      cursor: pointer

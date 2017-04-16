@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="188px" height="188px" viewBox="0 0 188 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-235.000000, -162.000000)" fill="#FFFFFF">
+            <g id="Group" transform="translate(227.000000, 150.000000)">
+                <path d="M89.2626583,21.4746834 C95.1927284,9.61454323 104.80635,9.61269979 110.737342,21.4746834 L189.262658,178.525317 C195.192728,190.385457 189.247131,200 175.999563,200 L24.0004374,200 C10.7453618,200 4.8063499,190.3873 10.7373417,178.525317 L89.2626583,21.4746834 Z" id="Triangle"></path>
+                <path d="M97.2626583,29.4746834 C103.192728,17.6145432 112.80635,17.6126998 118.737342,29.4746834 L197.262658,186.525317 C203.192728,198.385457 197.247131,208 183.999563,208 L32.0004374,208 C18.7453618,208 12.8063499,198.3873 18.7373417,186.525317 L97.2626583,29.4746834 Z" id="Triangle-Copy" opacity="0.695895522" transform="translate(108.000000, 108.000000) rotate(90.000000) translate(-108.000000, -108.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    include partials/head
+  body.landing
+    .wrapper
+      .content
+        .left
+          h1.hero-title Social Media Of The Future
+          p.hero-sub Join the network with more than 300,000+ developers
+          .btn-group
+            a.btn.btn-default Register
+            a.btn.btn-outline Learn More
+        .right
+          form.login-form
+            .form-header
+              h2 Welcome Back
+              p Login to pick up where you left off
+            .input-grp
+              label First Name
+              input(type="text" id="first" placeholder="First Name")
+            .input-grp
+              label Last Name
+              input(type='text' id="last" placeholder="Last Name")
+            .input-grp
+              label Password
+              input(type="password" id="pswd" placeholder="Password")
+            a#signin.btn.btn-default Sign In
+            p.form-info Forgot username or password? 
+              a Click Here
+    // Javascript
+    include partials/scripts
