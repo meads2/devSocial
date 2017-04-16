@@ -1,38 +1,32 @@
 $(function(){
-
   // Logout
-  $('.logo').click(function(){
-    $(location).attr('href', '../index.html');
-  });
+  logout();
 
-  // Link active
-  $('.link').click(function(e){
-    e.preventDefault();
-    $(this).addClass('active').siblings().removeClass('active');
-  });
+  // Link Active
+  toggleActiveLink();
 
   // Login Form Click Handler
-  $('#signin').click(function(){
-    saveUser();
-    heroExit();
-  });
+  login();
 
-  // update navatar
+  // Update Navatar
   createNavatar();
 
   // Dashboard Cards Animate In
   cardsAnimateIn();
 
-  // vote
+  // Vote
   vote();
 
-  // show detail
+  // Show Card Detail
   showDetail();
 
-  // Hide Detail
+  // Hide Card Detail
   hideDetail();
 
-}); // END OF MAIN
+});
+//       END OF MAIN
+// ------------------------
+// ------------------------
 
 
 
@@ -41,28 +35,84 @@ $(function(){
 
 
 
-// --------------------------------
-//            Custom f()s
-// --------------------------------
+
+
+
+
+// ------------------------
+//    toggleActiveLink()
+// ------------------------
+function toggleActiveLink(){
+  $('.link').click(function(e){
+    e.preventDefault();
+    $(this).addClass('active').siblings().removeClass('active');
+  });
+}
+
+// ------------------------
+//         login()
+// ------------------------
+function login(){
+  $('#signin').click(function(){
+    saveUser();
+    if(validateLogin())
+      heroExit();
+    else {
+      validateLogin();
+    }
+  });
+}
+
+// ------------------------
+//         logout()
+// ------------------------
+function logout(){
+  $('.logo').click(function(){
+    $(location).attr('href', '../index.html');
+  });
+}
+
+// ------------------------
+//         saveUser()
+// ------------------------
 function saveUser(){
   // Get firstName input
-  var first = $('#first').val()
-  console.log(first);
-  // Get lastName input
-  var last = $('#last').val();
-  console.log(last);
+  var full = $('#full').val()
+  console.log(full);
+  // Split Name at space
+  full = full.split(' ', 2);
+
   // Get password input
-  var pwsd = $('#pswd').val();
+  var pswd = $('#pswd').val();
   console.log(pswd);
   // update user Obj. with new input
   userInfo = {
-      firstName: first,
-      lastName: last,
-      password: pwsd
+      firstName: full[0],
+      lastName: full[1],
+      password: pswd
   };
   console.log(userInfo);
   // push obj. to localForage
   localStorage.setItem('user', JSON.stringify(userInfo));
+}
+
+// ------------------------
+//      validateLogin()
+// ------------------------
+function validateLogin(){
+    // Get all inputs
+    var formInputs = $('.input-grp input').val();
+    // Check if strings are empty
+    if(!formInputs){
+      // Add error classes
+      $('.input-grp input').addClass('error');
+      // return false
+      return false
+    }else{
+      // else return true
+      $(formInputs).removeClass('error')
+      return true
+    }
 }
 
 // ------------------------
@@ -95,34 +145,48 @@ function cardsAnimateIn(){
 }
 
 // ------------------------
-//           vote()
+//          vote()
 // ------------------------
 function vote(){
-  // Check if there is a previous vote
-  var vote = JSON.parse(localStorage.getItem('vote'));
-  if(vote.total == 0 ){
+  if(!checkVoteStatus()){
     $('.poll-btn.one').click(function(e){
-      $('.polls-btn').hide();
-      $('.info-message').css({'display':'block'});
       $('.first').addClass('did-vote');
       $('#p1').html('60%');
       confirmVote(e);
       $(this).addClass('is-disabled');
     });
     $('.poll-btn.two').click(function(e){
-      $('.polls-btn').hide();
-      $('.info-message').css({'display':'block'});
       $('.second').addClass('did-vote-2');
       $('#p2').html('84%');
       confirmVote(e);
       $(this).addClass('is-disabled');
     });
+  }else{
+    // Disable vote poll
+    $('.polls-btn').hide();
+    $('.info-message').css({'display':'block'});
   }
-  // Disabled if previously voted
-  $('.polls-btn').hide();
-  $('.info-message').css({'display':'block'});
-  $(this).addClass('is-disabled');
 }
+
+// ------------------------
+//     checkVoteStatus()
+// ------------------------
+function checkVoteStatus(){
+  // Get vote
+  var vote;
+  // See if a vote exists in localStorage
+  for(key in localStorage){
+    if(key == 'vote'){
+      vote = JSON.parse(localStorage.getItem('vote'));
+      console.log('User already voted...');
+      return true;
+    }else{
+      console.log('User can vote...');
+      return false;
+    }
+  }
+}
+
 
 // ------------------------
 //       confirmVote()
@@ -150,9 +214,12 @@ function confirmVote(e){
     // push updated obj to storage
     localStorage.setItem('vote', JSON.stringify(voteCounts));
   }
+  // Disable vote poll
+  $('.polls-btn').hide();
+  $('.info-message').css({'display':'block'});
+  // Log Out Success
   console.log('Vote added to storage...');
 }
-
 
 // ------------------------
 //       showDetail()
@@ -178,7 +245,6 @@ function showDetail(){
     updateLb(awards);
   }
   console.log('details shown');
-
   // Show that sections details only
   $('.lightbox').addClass('lb-visible');
   // Change the text of lightbox innercontent
@@ -231,14 +297,12 @@ function createNavatar(){
   // Get user obj.
   var user = JSON.parse(localStorage.getItem('user'));
   // Get firstname char at 0 from localForage
-  var fInitial = user.firstName.charAt(0);
+  var fInitial = user.firstName.charAt(0).toUpperCase();
   // Get lastname char at 0 from localForage
-  var lInitial = user.lastName.charAt(0);
+  var lInitial = user.lastName.charAt(0).toUpperCase();
   var initials = fInitial + lInitial;
   // Check obj was parsed
   console.log(initials);
-
-
   // Update inner text of avatar to two initials
   $('.navatar').text(initials);
   $('#user').text(user.firstName);
