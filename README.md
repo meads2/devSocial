@@ -1,7 +1,7 @@
 # devSocial
 A minimal jquery social media project for a class project
 
-[Demo Site](disturbed-lamp.surge.sh)
+[Demo Site](http://disturbed-lamp.surge.sh/)
 
 ## Technolgies
 - HTML5 localStorage API to have persistent storage of app data
