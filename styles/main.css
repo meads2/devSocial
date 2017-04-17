@@ -445,11 +445,13 @@ a.poll-btn {
 
 .lb-visible {
   display: flex !important;
+  height: 100%;
   transition: 500ms; }
 
 .lightbox {
   display: none;
-  position: absolute;
+  position: fixed;
+  overflow: auto;
   transition: 500ms;
   width: 100%;
   height: 100%;
@@ -478,11 +480,11 @@ a.poll-btn {
       cursor: pointer;
       color: rgba(0, 0, 0, 0.6); }
   .lightbox-body h1 {
-    font-size: 32px;
+    font-size: 28px;
     margin-bottom: 30px;
     font-weight: 600; }
   .lightbox-body p, .lightbox-body li {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 22px; }
 
 .bullets {

@@ -1,4 +1,5 @@
 $(function(){
+
   // Logout
   logout();
 
@@ -14,6 +15,9 @@ $(function(){
   // Dashboard Cards Animate In
   cardsAnimateIn();
 
+  // Toggle Poll
+  togglePoll();
+  
   // Vote
   vote();
 
@@ -23,11 +27,7 @@ $(function(){
   // Hide Card Detail
   hideDetail();
 
-});
-//       END OF MAIN
-// ------------------------
-// ------------------------
-
+}); // END OF MAIN
 
 
 
@@ -145,10 +145,19 @@ function cardsAnimateIn(){
 }
 
 // ------------------------
+//       togglePoll();
+// ------------------------
+function togglePoll(){
+    if(checkVoteStatus()){
+      $('.polls-btn').hide();
+      $('.info-message').css({'display':'block'});
+    }
+}
+
+// ------------------------
 //          vote()
 // ------------------------
 function vote(){
-  if(!checkVoteStatus()){
     $('.poll-btn.one').click(function(e){
       $('.first').addClass('did-vote');
       $('#p1').html('60%');
@@ -161,29 +170,23 @@ function vote(){
       confirmVote(e);
       $(this).addClass('is-disabled');
     });
-  }else{
-    // Disable vote poll
-    $('.polls-btn').hide();
-    $('.info-message').css({'display':'block'});
-  }
 }
 
 // ------------------------
 //     checkVoteStatus()
 // ------------------------
 function checkVoteStatus(){
-  // Get vote
-  var vote;
   // See if a vote exists in localStorage
+  var keys = [];
   for(key in localStorage){
-    if(key == 'vote'){
-      vote = JSON.parse(localStorage.getItem('vote'));
-      console.log('User already voted...');
-      return true;
-    }else{
-      console.log('User can vote...');
-      return false;
-    }
+    keys.push(key);
+  }
+  if( $.inArray('vote', keys) == 1){
+    console.log('User Already Voted...');
+    return true
+  }else{
+    console.log('User Can vote...');
+    return false
   }
 }
 
@@ -254,7 +257,7 @@ function showDetail(){
 }
 
 // ------------------------
-//     updateLightbox()
+//         updateLb()
 // ------------------------
 function updateLb(obj){
   // update lightbox title
@@ -291,7 +294,7 @@ function hideDetail(){
 }
 
 // ------------------------
-//       getInitials()
+//     createNavatar()
 // ------------------------
 function createNavatar(){
   // Get user obj.
