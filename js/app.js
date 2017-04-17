@@ -6,6 +6,9 @@ $(function(){
   // Link Active
   toggleActiveLink();
 
+  // Login Via 'Enter'
+  loginViaEnter();
+
   // Login Form Click Handler
   login();
 
@@ -17,7 +20,7 @@ $(function(){
 
   // Toggle Poll
   togglePoll();
-  
+
   // Vote
   vote();
 
@@ -55,12 +58,28 @@ function toggleActiveLink(){
 function login(){
   $('#signin').click(function(){
     saveUser();
-    if(validateLogin())
+    if(validateLogin()){
       heroExit();
-    else {
+    }else {
       validateLogin();
     }
   });
+}
+// ------------------------
+//         login()
+// ------------------------
+function loginViaEnter(){
+    $(document).keydown(function(e){
+      // Check Key Code
+      if(e && e.keyCode == 13) {
+        saveUser();
+        if(validateLogin()){
+          heroExit();
+        }else {
+          validateLogin();
+        }
+      }
+    });
 }
 
 // ------------------------
@@ -102,8 +121,11 @@ function saveUser(){
 function validateLogin(){
     // Get all inputs
     var formInputs = $('.input-grp input').val();
+    // Make Sure User Enters Full Name
+    var full = $('#full').val();
+    full = full.split(' ', 2);
     // Check if strings are empty
-    if(!formInputs){
+    if(!formInputs || full.length != 2){
       // Add error classes
       $('.input-grp input').addClass('error');
       // return false
